@@ -51,6 +51,7 @@ AllShortcuts["Windows"] := [
     ["Show/Hide Desktop", "Win + D"],
     ["Always On Top", "Win + Backtick"],
     ["Close Program", "Win + W"],
+    ["Close Active Tab", "Shift + Capslock"],
     ["Open Action Center", "Win + A"],
     ["Interact With Taskbar", "Win + Num"],
     ["Move Between Tabs", "Ctrl + Num"],
@@ -118,7 +119,6 @@ AllShortcuts["Global Search"] := [
 ]
 ; ===============================
 
-
 ; Shortcuts GUI
 ; ===============================
 MyGui := Gui(, "Shortcut Cheat Sheet")
@@ -151,7 +151,6 @@ SwitchList(ListName) {
 ; Load default list
 SwitchList("Main List")
 ; ===============================
-
 
 ; Timer GUI
 ; ===============================
@@ -231,7 +230,6 @@ loop 4 {
 ; -------------------------------
 ; ===============================
 
-
 ; Automator GUI
 ; ===============================
 AutomatorGui := Gui(, "AHK Automator")
@@ -241,7 +239,7 @@ AutomatorGui.BackColor := "0B090A"
 ; -------------------------------
 AutomatorGui.SetFont("s18 Bold cF5F3F4", "Segoe UI")
 AutomatorGui.Add("Text", "x0 y15 Center w420", "AUTO CLICKER")
-AutomatorGui.Add("Text", "x0 h0 w422 0x10") 
+AutomatorGui.Add("Text", "x0 h0 w422 0x10")
 
 ; -- Key Selection --
 AutomatorGui.SetFont("s12 Bold cWhite")
@@ -249,33 +247,33 @@ AutomatorGui.Add("Text", "x20 y+25 section", "Key/Mouse:")
 EditAutoKey := AutomatorGui.Add("Edit", "x+10 w50 h26 cBlack", "m1")
 
 ; -- Interval (ms) --
-AutomatorGui.Add("Text", "x+55 yp", "Interval (ms):") 
+AutomatorGui.Add("Text", "x+55 yp", "Interval (ms):")
 EditInterval := AutomatorGui.Add("Edit", "x+10 yp w60 h26 cBlack", "100")
 
 ; -- Location Selection --
-RadioCur  := AutomatorGui.Add("Radio", "xs y+15 Checked", "Current location")
-RadioPick := AutomatorGui.Add("Radio", "x+55 w20 h20", "") 
+RadioCur := AutomatorGui.Add("Radio", "xs y+15 Checked", "Current location")
+RadioPick := AutomatorGui.Add("Radio", "x+55 w20 h20", "")
 AutomatorGui.SetFont("s11 Bold cWhite")
-BtnPick   := AutomatorGui.Add("Button", "x+2 yp-4 h28 w110 Background0B090A cBlack", "Pick location")
+BtnPick := AutomatorGui.Add("Button", "x+2 yp-4 h28 w110 Background0B090A cBlack", "Pick location")
 BtnPick.OnEvent("Click", GetLocation)
 
 ; -- Mode Selection (Tap/Hold) --
 AutomatorGui.SetFont("s12 Bold cWhite")
-RadioTap  := AutomatorGui.Add("Radio", "x20 Checked", "Tap")
+RadioTap := AutomatorGui.Add("Radio", "x20 Checked", "Tap")
 RadioHold := AutomatorGui.Add("Radio", "x+10", "Hold")
 
 ; -- X & Y Coordinations --
 AutomatorGui.Add("Text", "x+80 yp+4", "X:")
-EditX     := AutomatorGui.Add("Edit", "x+5 yp-4 w40 h26 cBlack", "0")
+EditX := AutomatorGui.Add("Edit", "x+5 yp-4 w40 h26 cBlack", "0")
 AutomatorGui.Add("Text", "x+10 yp+4", "Y:")
-EditY     := AutomatorGui.Add("Edit", "x+5 yp-4 w40 h26 cBlack", "0")
-AutomatorGui.Add("Text", "x0 y+25 h0 w422 0x10") 
+EditY := AutomatorGui.Add("Edit", "x+5 yp-4 w40 h26 cBlack", "0")
+AutomatorGui.Add("Text", "x0 y+25 h0 w422 0x10")
 
 ; Macro Recorder GUI
 ; -------------------------------
 AutomatorGui.SetFont("s18 Bold")
 AutomatorGui.Add("Text", "x0 y+15 Center w420 cWhite", "MACRO RECORDER")
-AutomatorGui.Add("Text", "x0 h0 w422 0x10") 
+AutomatorGui.Add("Text", "x0 h0 w422 0x10")
 
 ; -- Repeat Logic --
 AutomatorGui.SetFont("s12 Bold cWhite")
@@ -285,24 +283,23 @@ EditMacroInterval := AutomatorGui.Add("Edit", "x+5 yp-3 w60 h26 cBlack", "1000")
 
 ; -- Reocrd Buttons --
 AutomatorGui.SetFont("s10 cBlack")
-BtnRecord  := AutomatorGui.Add("Button", "x20 w120 h30", "Record")
+BtnRecord := AutomatorGui.Add("Button", "x20 w120 h30", "Record")
 BtnStopRec := AutomatorGui.Add("Button", "x+10 w120 h30", "Stop")
-BtnPlay    := AutomatorGui.Add("Button", "x+10 w120 h30", "Play")
+BtnPlay := AutomatorGui.Add("Button", "x+10 w120 h30", "Play")
 
-; -- Record List -- 
+; -- Record List --
 AutomatorGui.SetFont("s12 Bold cWhite")
 AutomatorGui.Add("Text", "x20 y+15", "Live Sequence:")
 AutomatorGui.SetFont("s10 Bold cWhite")
-MacroList  := AutomatorGui.Add("ListView", "x20 y+5 r8 w380 cBlack", ["Key", "Delay (ms)"])
+MacroList := AutomatorGui.Add("ListView", "x20 y+5 r8 w380 cBlack", ["Key", "Delay (ms)"])
 MacroList.ModifyCol(1, 100)
 MacroList.ModifyCol(2, 259)
 
 ; -- Export/Import --
-BtnExport  := AutomatorGui.Add("Button", "x20 y+10 w185 h35 cBlack", "Export (CSV)")
-BtnImport  := AutomatorGui.Add("Button", "x+10 w185 h35 cBlack", "Import (CSV)")
+BtnExport := AutomatorGui.Add("Button", "x20 y+10 w185 h35 cBlack", "Export (CSV)")
+BtnImport := AutomatorGui.Add("Button", "x+10 w185 h35 cBlack", "Import (CSV)")
 
 ; ===============================
-
 
 ; Global Search GUI
 ; ===============================
@@ -316,14 +313,12 @@ GSearchInput := GSearchGui.Add("Edit", "w500 vSearchQuery -WantReturn")
 GSearchInput.OnEvent("Focus", (*) => Send("^a"))
 ; ===============================
 
-
 ; ===============================
 ; Update GUI every 50ms
 SetTimer UpdateTimers, 50
 ; Function Key
 SetCapsLockState "AlwaysOff"
 ; ===============================
-
 
 ; Hotkeys
 ; ===============================
@@ -369,6 +364,21 @@ CapsLock & Esc::
     Send "!{f4}"
 }
 
+; -- Close Active Tab --
++CapsLock::
+{
+    if WinExist("ahk_exe brave.exe") {
+        SetWinDelay(-1)
+
+        prevWin := WinExist("A")
+        WinActivate("ahk_exe brave.exe")
+
+        Send("^w")
+        sleep 50
+        WinActivate(prevWin)
+    }
+}
+
 ; -- Always On Top --
 #`::
 {
@@ -407,36 +417,36 @@ CapsLock & a::
 }
 
 ; -- Jump Backward 5s --
-CapsLock & q:: 
+CapsLock & q::
 {
     SkipMedia(-5)
 }
 
 ; -- Jump Forward 5s --
-CapsLock & e:: 
+CapsLock & e::
 {
     SkipMedia(5)
 }
 
 ; -- Jump To Start --
-CapsLock & r:: 
+CapsLock & r::
 {
     try {
         session := Media.GetCurrentSession()
         session.ChangePlaybackPosition(session.StartTime)
-    } 
+    }
     catch {
         ; Do nothing
     }
 }
 
 ; -- Jump To End --
-CapsLock & t:: 
+CapsLock & t::
 {
     try {
         session := Media.GetCurrentSession()
         session.ChangePlaybackPosition(session.EndTime)
-    } 
+    }
     catch {
         ; Do nothing
     }
@@ -510,15 +520,14 @@ CapsLock & f::
     } else {
         GSearchInput.Value := ""
         GSearchGui.Show("")
-        historyIndex := 0 
+        historyIndex := 0
     }
 }
 ; -------------------------------
 
 ; ===============================
 
-
-; Includes/Runs
+; Includes
 ; ===============================
 #Include Discord.ahk
 #Include Timer.ahk
